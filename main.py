@@ -19,7 +19,7 @@ def custom_init():
     time_played = 0
     coords = [180, 180, 200, 200]
     snake_head = canvas.create_rectangle(coords[0], coords[1], coords[2], coords[3], fill='black') #vytvorim zaciatocny bod
-    snake_movement_west() #zacnem pohyb
+    snake_movement_west(event) #zacnem pohyb
 
 #----game over----
 def game_over():
@@ -35,7 +35,7 @@ def restart(event):
     custom_init()
 
 #----movement----
-def snake_movement_north():
+def snake_movement_north(event):
     if coords[1]-20 <= 0:
         canvas.configure(background='red')
         game_over()
@@ -45,7 +45,7 @@ def snake_movement_north():
         canvas.coords(snake_head, coords[0], coords[1], coords[2], coords[3])
         canvas.after(300, snake_movement_north)
 
-def snake_movement_south():
+def snake_movement_south(event):
     if coords[3] >= canvas_window_size:
         canvas.configure(background='red')
         game_over()
@@ -55,7 +55,7 @@ def snake_movement_south():
         canvas.coords(snake_head, coords[0], coords[1], coords[2], coords[3])
         canvas.after(300, snake_movement_south)
 
-def snake_movement_east():
+def snake_movement_east(event):
     if coords[2] >= canvas_window_size:
         canvas.configure(background='red')
         game_over()
@@ -66,7 +66,7 @@ def snake_movement_east():
         canvas.coords(snake_head, coords[0], coords[1], coords[2], coords[3])
         canvas.after(200, snake_movement_east)
 
-def snake_movement_west():
+def snake_movement_west(event):
     if coords[2]-20 <= 0:
         canvas.configure(background='red')
         game_over()
